@@ -1,8 +1,8 @@
-package main;
+package myprojects.trianglecalc;
+
 import java.util.*;
 
-public class Run {
-
+class TriangleCalc {
 	public static void main(String[] args) {
 		//Initialize variables
 		int counter = 0;
@@ -48,5 +48,4 @@ public class Run {
 		}
 		input.close();
 	}
-
 }
