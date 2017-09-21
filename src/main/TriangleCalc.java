@@ -1,4 +1,4 @@
-package myprojects.trianglecalc;
+package trianglecalc;
 
 import java.util.*;
 
