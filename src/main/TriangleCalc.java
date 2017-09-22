@@ -10,7 +10,8 @@ class TriangleCalc {
 		Double stringAsDouble;
 		Double[] triangleSides = new Double[3];
 		Double totalArea = (double) 0;
-		ArrayList<Triangle> areaArray = new ArrayList<Triangle>();
+		ArrayList<Triangle> triangleArray = new ArrayList<Triangle>();
+		ArrayList<Double> areaArray = new ArrayList<Double>();
 		//Start solver
 		while(true) {
 			String x = input.next(); //Assign user input to x
@@ -19,8 +20,8 @@ class TriangleCalc {
 				if(counter == 0) { //Have they filled all triangles
 					System.out.println("Printing results...");
 					System.out.println("Area of each triangle in an array: " + areaArray);
-					for(int arrLength = areaArray.size();arrLength > 0; arrLength -= 1) {
-						totalArea = totalArea + areaArray.get(arrLength - 1);
+					for(int arrLength = triangleArray.size();arrLength > 0; arrLength -= 1) {
+						totalArea = totalArea + triangleArray.get(arrLength - 1).getArea();
 					}
 					System.out.println("Area of all triangles combined: "  + totalArea);
 					break;
@@ -38,7 +39,8 @@ class TriangleCalc {
 			
 			counter -= 1;
 			if(counter == 0) {
-				areaArray.add(new Triangle(triangleSides[0], triangleSides[1], triangleSides[2]));
+				triangleArray.add(new Triangle(triangleSides[0], triangleSides[1], triangleSides[2]));
+				areaArray.add(new Triangle(triangleSides[0], triangleSides[1], triangleSides[2]).getArea());
 			}
 		}
 		input.close();
