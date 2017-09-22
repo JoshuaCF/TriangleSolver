@@ -1,4 +1,4 @@
-package trianglecalc;
+package myprojects.trianglecalc;
 
 import java.util.*;
 
@@ -19,9 +19,10 @@ class TriangleCalc {
 			if(x.equals("Done")) { //Is the user finished
 				if(counter == 0) { //Have they filled all triangles
 					System.out.println("Printing results...");
-					System.out.println("Area of each triangle in an array: " + areaArray);
-					for(int arrLength = triangleArray.size();arrLength > 0; arrLength -= 1) {
-						totalArea = totalArea + triangleArray.get(arrLength - 1).getArea();
+					System.out.println("Measures of each triangle: " + areaArray);
+					for(int iteration = 0;iteration < triangleArray.size(); iteration += 1) {
+						totalArea = totalArea + triangleArray.get(iteration).getArea();
+						triangleArray.get(iteration).print(iteration);
 					}
 					System.out.println("Area of all triangles combined: "  + totalArea);
 					break;
