@@ -10,7 +10,7 @@ class TriangleCalc {
 		Double stringAsDouble;
 		Double[] triangleSides = new Double[3];
 		Double totalArea = (double) 0;
-		ArrayList<Double> areaArray = new ArrayList<Double>();
+		ArrayList<Triangle> areaArray = new ArrayList<Triangle>();
 		//Start solver
 		while(true) {
 			String x = input.next(); //Assign user input to x
@@ -38,12 +38,7 @@ class TriangleCalc {
 			
 			counter -= 1;
 			if(counter == 0) {
-				Double a = triangleSides[0];
-				Double b = triangleSides[1];
-				Double c = triangleSides[2];
-				Double s = (a + b + c)/2;
-				Double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
-				areaArray.add(area);
+				areaArray.add(new Triangle(triangleSides[0], triangleSides[1], triangleSides[2]));
 			}
 		}
 		input.close();
