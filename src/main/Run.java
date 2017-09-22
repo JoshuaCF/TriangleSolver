@@ -1,8 +1,8 @@
 package main;
+
 import java.util.*;
 
-public class Run {
-
+class Run {
 	public static void main(String[] args) {
 		//Initialize variables
 		int counter = 0;
@@ -10,6 +10,7 @@ public class Run {
 		Double stringAsDouble;
 		Double[] triangleSides = new Double[3];
 		Double totalArea = (double) 0;
+		ArrayList<Triangle> triangleArray = new ArrayList<Triangle>();
 		ArrayList<Double> areaArray = new ArrayList<Double>();
 		//Start solver
 		while(true) {
@@ -18,9 +19,10 @@ public class Run {
 			if(x.equals("Done")) { //Is the user finished
 				if(counter == 0) { //Have they filled all triangles
 					System.out.println("Printing results...");
-					System.out.println("Area of each triangle in an array: " + areaArray);
-					for(int arrLength = areaArray.size();arrLength > 0; arrLength -= 1) {
-						totalArea = totalArea + areaArray.get(arrLength - 1);
+					System.out.println("Measures of each triangle: " + areaArray);
+					for(int iteration = 0;iteration < triangleArray.size(); iteration += 1) {
+						totalArea = totalArea + triangleArray.get(iteration).getArea();
+						triangleArray.get(iteration).print(iteration + 1);
 					}
 					System.out.println("Area of all triangles combined: "  + totalArea);
 					break;
@@ -38,15 +40,10 @@ public class Run {
 			
 			counter -= 1;
 			if(counter == 0) {
-				Double a = triangleSides[0];
-				Double b = triangleSides[1];
-				Double c = triangleSides[2];
-				Double s = (a + b + c)/2;
-				Double area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
-				areaArray.add(area);
+				triangleArray.add(new Triangle(triangleSides[0], triangleSides[1], triangleSides[2]));
+				areaArray.add(new Triangle(triangleSides[0], triangleSides[1], triangleSides[2]).getArea());
 			}
 		}
 		input.close();
 	}
-
 }
