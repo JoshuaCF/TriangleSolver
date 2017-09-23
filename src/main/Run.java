@@ -19,12 +19,15 @@ class Run {
 			if(x.equals("Done")) { //Is the user finished
 				if(counter == 0) { //Have they filled all triangles
 					System.out.println("Printing results...");
-					System.out.println("Measures of each triangle: " + areaArray);
+					System.out.println("Measures of each triangle: ");
 					for(int iteration = 0;iteration < triangleArray.size(); iteration += 1) {
 						totalArea = totalArea + triangleArray.get(iteration).getArea();
 						triangleArray.get(iteration).print(iteration + 1);
+						System.out.println();
 					}
 					System.out.println("Area of all triangles combined: "  + totalArea);
+					System.out.println("Finished, type anything and press enter to exit");
+					x = input.next();
 					break;
 				}
 				if(counter != 0) { //If not, go back and warn them
